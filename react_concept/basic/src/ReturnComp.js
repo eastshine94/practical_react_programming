@@ -14,7 +14,7 @@ export default function ReturnComp() {
 
       {ReactDOM.createPortal(
         <div>
-          <h4>portal 영역</h4>
+          <h3 style={{ borderTop: '3px solid #000' }}>portal 영역</h3>
           <p>실전 리액트 프로그래밍 입니다</p>
         </div>,
         document.getElementById('something')
