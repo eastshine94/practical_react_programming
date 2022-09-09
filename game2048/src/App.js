@@ -1,15 +1,24 @@
+import React, { useState, useEffect } from "react";
+import Header from "./components/Header";
 import AboveGame from "./components/AboveGame";
 import Game from "./components/Game";
-import Header from "./components/Header";
+import useLocalStorageNumber from "./hooks/useLocalStorageNumber";
 
-function App() {
+export default function App() {
+  const [score, setScore] = useState(0);
+  const [bestScore, setBestScore] = useLocalStorageNumber("bestScore", 0);
+
+  useEffect(() => {
+    if (score > bestScore) {
+      setBestScore(score);
+    }
+  });
+
   return (
     <div className="container">
-      <Header />
+      <Header score={score} bestScore={bestScore} />
       <AboveGame />
-      <Game />
+      <Game setScore={setScore} />
     </div>
   );
 }
-
-export default App;
